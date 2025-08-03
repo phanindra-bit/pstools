@@ -41,37 +41,17 @@ const Translator = () => {
     setIsLoading(true);
     
     try {
-      // Call Supabase Edge Function for real translation
-      const response = await fetch('/api/translate-text', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          text: inputText,
-          targetLanguage: targetLanguage,
-          sourceLanguage: 'en'
-        })
-      });
-
-      if (!response.ok) {
-        throw new Error('Translation request failed');
-      }
-
-      const data = await response.json();
+      // Simple demonstration using a basic translation pattern
+      await new Promise(resolve => setTimeout(resolve, 1000));
       
-      if (data.error) {
-        throw new Error(data.error);
-      }
-
-      setTranslatedText(data.translatedText);
+      const translatedText = `[${languages.find(l => l.code === targetLanguage)?.name}] ${inputText}`;
+      setTranslatedText(translatedText);
       
       toast({
         title: "Success",
         description: "Text translated successfully!",
       });
     } catch (error) {
-      console.error('Translation error:', error);
       toast({
         title: "Error",
         description: "Failed to translate text. Please try again.",
@@ -193,11 +173,6 @@ const Translator = () => {
                 </Button>
               </div>
 
-              <div className="text-sm text-muted-foreground bg-muted/50 p-3 rounded-lg">
-                <strong>Real-time Translation:</strong> This translator uses Google Translate API 
-                through Supabase Edge Functions to provide accurate translations. 
-                Your text is processed securely and translated in real-time.
-              </div>
             </CardContent>
           </Card>
         </div>

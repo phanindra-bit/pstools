@@ -100,39 +100,6 @@ const Index = () => {
             })}
           </div>
 
-          {/* Technical Details */}
-          <div className="mt-16 text-center">
-            <Card className="shadow-card border-border/50 bg-card/50 backdrop-blur-sm">
-              <CardHeader>
-                <CardTitle>Technical Implementation</CardTitle>
-                <CardDescription>
-                  Built with modern React patterns and best practices
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm">
-                  <div className="space-y-2">
-                    <h4 className="font-medium">React Hooks</h4>
-                    <p className="text-muted-foreground">
-                      Uses useState, useCallback, and useEffect for efficient state management
-                    </p>
-                  </div>
-                  <div className="space-y-2">
-                    <h4 className="font-medium">Client-side Routing</h4>
-                    <p className="text-muted-foreground">
-                      React Router DOM for seamless navigation between tools
-                    </p>
-                  </div>
-                  <div className="space-y-2">
-                    <h4 className="font-medium">API Integration</h4>
-                    <p className="text-muted-foreground">
-                      Ready for RapidAPI integration with proper error handling
-                    </p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
         </div>
       </div>
     </div>
