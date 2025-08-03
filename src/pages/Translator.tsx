@@ -40,35 +40,38 @@ const Translator = () => {
 
     setIsLoading(true);
     
-    // For demo purposes, I'll use a mock translation service
-    // In a real app, you would integrate with RapidAPI here
     try {
-      // Mock translation delay
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      
-      // Mock translated response
-      const mockTranslations: Record<string, string> = {
-        es: "¡Hola! Esta es una traducción simulada al español.",
-        fr: "Bonjour! Ceci est une traduction simulée en français.",
-        de: "Hallo! Dies ist eine simulierte Übersetzung ins Deutsche.",
-        it: "Ciao! Questa è una traduzione simulata in italiano.",
-        pt: "Olá! Esta é uma tradução simulada para o português.",
-        ru: "Привет! Это имитированный перевод на русский язык.",
-        ja: "こんにちは！これは日本語への模擬翻訳です。",
-        ko: "안녕하세요! 이것은 한국어로의 모의 번역입니다.",
-        zh: "你好！这是中文的模拟翻译。",
-        ar: "مرحبا! هذه ترجمة محاكاة إلى العربية.",
-        hi: "नमस्ते! यह हिंदी में एक नकली अनुवाद है।",
-      };
+      // Call Supabase Edge Function for real translation
+      const response = await fetch('/api/translate-text', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          text: inputText,
+          targetLanguage: targetLanguage,
+          sourceLanguage: 'en'
+        })
+      });
 
-      const translated = mockTranslations[targetLanguage] || `Translated: ${inputText}`;
-      setTranslatedText(translated);
+      if (!response.ok) {
+        throw new Error('Translation request failed');
+      }
+
+      const data = await response.json();
+      
+      if (data.error) {
+        throw new Error(data.error);
+      }
+
+      setTranslatedText(data.translatedText);
       
       toast({
         title: "Success",
         description: "Text translated successfully!",
       });
     } catch (error) {
+      console.error('Translation error:', error);
       toast({
         title: "Error",
         description: "Failed to translate text. Please try again.",
@@ -191,9 +194,9 @@ const Translator = () => {
               </div>
 
               <div className="text-sm text-muted-foreground bg-muted/50 p-3 rounded-lg">
-                <strong>Note:</strong> This is a demo version using mock translations. 
-                To use real translation services, integrate with RapidAPI's translation endpoints 
-                by storing your API key securely and making requests to the translation service.
+                <strong>Real-time Translation:</strong> This translator uses Google Translate API 
+                through Supabase Edge Functions to provide accurate translations. 
+                Your text is processed securely and translated in real-time.
               </div>
             </CardContent>
           </Card>
