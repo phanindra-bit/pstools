@@ -6,7 +6,7 @@ import { Languages, Shuffle, ArrowRight, Sparkles } from "lucide-react";
 const Index = () => {
   const tools = [
     {
-      title: "Text Translator",
+      title: "PS Text Transfer",
       description: "Translate English text to multiple languages instantly using AI translation services",
       icon: Languages,
       path: "/translator",
@@ -14,7 +14,7 @@ const Index = () => {
       features: ["Multi-language support", "Instant translation", "Copy to clipboard"]
     },
     {
-      title: "String Generator", 
+      title: "PS Random String Generator", 
       description: "Generate secure random strings with customizable character sets and length",
       icon: Shuffle,
       path: "/string-generator",
@@ -31,9 +31,9 @@ const Index = () => {
           <div className="text-center mb-16">
             <div className="flex items-center justify-center mb-6">
               <Sparkles className="h-8 w-8 text-primary mr-3" />
-              <h1 className="text-5xl font-bold bg-gradient-primary bg-clip-text text-transparent">
-                DevTools Suite
-              </h1>
+            <h1 className="text-5xl font-bold bg-gradient-primary bg-clip-text text-transparent">
+              PS Tools Suite
+            </h1>
             </div>
             <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
               A collection of powerful development tools built with React. 

@@ -7,8 +7,8 @@ const Navigation = () => {
 
   const navItems = [
     { path: "/", label: "Home", icon: Home },
-    { path: "/translator", label: "Translator", icon: Languages },
-    { path: "/string-generator", label: "String Generator", icon: Shuffle },
+    { path: "/translator", label: "PS Text Transfer", icon: Languages },
+    { path: "/string-generator", label: "PS String Generator", icon: Shuffle },
   ];
 
   return (
@@ -16,7 +16,7 @@ const Navigation = () => {
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           <Link to="/" className="text-2xl font-bold bg-gradient-primary bg-clip-text text-transparent">
-            DevTools
+            PS Tools
           </Link>
           
           <div className="flex items-center gap-2">

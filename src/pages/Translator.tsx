@@ -105,7 +105,7 @@ const Translator = () => {
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-8">
             <h1 className="text-4xl font-bold mb-4 bg-gradient-primary bg-clip-text text-transparent">
-              Text Translator
+              PS Text Transfer
             </h1>
             <p className="text-muted-foreground text-lg">
               Translate your English text to any language instantly
